@@ -53,8 +53,12 @@ class SketchExample extends React.Component {
           top: '0px',
           right: '0px',
           bottom: '0px',
-          left: '0px',
+          left: '0px'
         },
+        wrapper: {
+          position: 'inherit',
+          zIndex: '100'
+        }
       },
     })
 
@@ -63,9 +67,11 @@ class SketchExample extends React.Component {
         <div style={ styles.swatch } onClick={ this.handleClick }>
           <div style={ styles.color } />
         </div>
-        { this.state.displayColorPicker ? <div style={ styles.popover }>
-          <div style={ styles.cover } onClick={ this.handleClose } />
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+        { this.state.displayColorPicker ? <div is="popover">
+          <div is="cover" onClick={ this.handleClose }/>
+          <div is="wrapper">
+            <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+          </div>
         </div> : null }
 
       </div>
